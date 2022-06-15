@@ -22,5 +22,28 @@ maven-install:
         make install-java
         yum install maven
         
-```     
- 
+DOCKER_CONTAINER_NAME=FrontEnd-API
+docker-image-with-tar:
+	npm ci
+	make build-docker-image
+	docker save ${DOCKER_CONTAINER_NAME}:latest > ${DOCKER_CONTAINER_NAME}_latest.tar
+
+build-docker-image:
+	rm -rf node_modules dist logs
+	docker build --no-cache -t ${DOCKER_CONTAINER_NAME} .
+   
+npm-pre-check:
+	npm run format-build-test
+
+npm-build:
+	npm run build:no-emit
+
+npm-check:
+	npm run check
+
+format-build-test-and-start:
+	npm run format && npm run build && npm run test && npm run start
+
+npm-test-and-start:
+	npm run test && npm run start
+```
