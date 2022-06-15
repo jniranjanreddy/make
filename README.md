@@ -1,5 +1,6 @@
 ## make
 
+Command should be followed by make example: make deploy-backend-apps
 ```
 USER_NAME=nirulabs
 DEPLOYMENT_DIR=./auto_scripts
