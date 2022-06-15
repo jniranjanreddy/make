@@ -2,8 +2,6 @@
 
 ```
 USER_NAME=nirulabs
-NODE_ENV_PRODUCTION=NODE_ENV=production
-NODE_ENV_DEVELOPMENT=NODE_ENV=development
 DEPLOYMENT_DIR=./auto_scripts
 check-user:
         echo ${USER_NAME}
