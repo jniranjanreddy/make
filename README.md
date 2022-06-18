@@ -6,8 +6,17 @@ USER_NAME=nirulabs
 DEPLOYMENT_DIR=./auto_scripts
 check-user:
         echo ${USER_NAME}
-        echo ${NODE_ENV_PRODUCTION}
-        echo ${NODE_ENV_DEVELOPMENT}
+
+USER_NAME = nirucloud # lazy value set
+USER_NAME := nirueks # Immediate Set
+USER_NAME ?= nirulabs #if value exist for variable, its takes value, else it will take new value
+USER_NAME += com # It appends value ex: nirueks +com
+DOCKER_BUILD = 3
+export DOCKER_BUILD?=1 # if value exist for variable, its takes value, else it will take new value 
+check-user_name:
+	@echo ${USER_NAME}
+	@echo ${DOCKER_BUILD}
+ 
 
 deploy-backend-apps:
         ${DEPLOYMENT_DIR}/deploy-backend.sh
@@ -47,7 +56,7 @@ format-build-test-and-start:
 npm-test-and-start:
 	npm run test && npm run start
 ```
-# How to load variables from a file, # Prod.env file should exist in the same path as makefile
+## How to load variables from a file, # Prod.env file should exist in the same path as makefile
 ```
 prod_config = prod.env
 include $(prod_config)
