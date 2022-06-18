@@ -1,4 +1,4 @@
-## make
+## makefile
 
 Command should be followed by make example: make deploy-backend-apps
 ```
@@ -54,7 +54,7 @@ include $(prod_config)
 export $(shell sed 's/=.*//' $(prod_config))
 
 hello-env:
-	echo ${AWS_EKS_CLUSTER_NAME}
+	@echo ${AWS_EKS_CLUSTER_NAME}   # without @echo, echo command will be displayed in command output" 
 	env | wc -l
 
 
