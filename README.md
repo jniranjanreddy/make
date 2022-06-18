@@ -47,3 +47,15 @@ format-build-test-and-start:
 npm-test-and-start:
 	npm run test && npm run start
 ```
+# How to load variables from a file, # Prod.env file should exist in the same path as makefile
+```
+prod_config = prod.env
+include $(prod_config)
+export $(shell sed 's/=.*//' $(prod_config))
+
+hello-env:
+	echo ${AWS_EKS_CLUSTER_NAME}
+	env | wc -l
+
+
+```
